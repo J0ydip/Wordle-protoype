@@ -257,3 +257,4 @@ document.getElementById('guessInput').addEventListener('input', updatePatternBut
 // Initial Setup
 initializePatternButtons();
 loadWordLists();
+

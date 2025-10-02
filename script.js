@@ -90,10 +90,10 @@ let currentPattern = ['b', 'b', 'b', 'b', 'b'];
 
 async function loadWordLists() {
     try {
-        // --- PATH FIX: Changed '/data/' to './data/' for relative loading on GitHub Pages ---
+        // --- PATH FIX: Using ABSOLUTE paths, which is correct when the <base> tag is set ---
         const [answersRes, guessesRes] = await Promise.all([
-            fetch('./data/possible_answers.txt'),
-            fetch('./data/allowed_guesses.txt')
+            fetch('/data/possible_answers.txt'),
+            fetch('/data/allowed_guesses.txt')
         ]);
 
         if (!answersRes.ok || !guessesRes.ok) {
@@ -200,7 +200,6 @@ function calculateRecommendations(count = 20) {
     }
 
     listEl.innerHTML = recommendations.map(rec => {
-        // Highlighting possible answers (the "green box" logic)
         const isAnswerClass = rec.isPossibleAnswer ? 'style="border: 2px solid #6aaa64; background: #e6ffed;"' : '';
         const answerLabel = rec.isPossibleAnswer ? ' (Ans)' : '';
         
@@ -257,4 +256,3 @@ document.getElementById('guessInput').addEventListener('input', updatePatternBut
 // Initial Setup
 initializePatternButtons();
 loadWordLists();
-

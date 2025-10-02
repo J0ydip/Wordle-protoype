@@ -90,14 +90,15 @@ let currentPattern = ['b', 'b', 'b', 'b', 'b'];
 
 async function loadWordLists() {
     try {
-        // --- PATH FIX: Using ABSOLUTE paths, which is correct when the <base> tag is set ---
+        // --- DEFINITIVE PATH FIX: Using the simple relative path './data/' ---
         const [answersRes, guessesRes] = await Promise.all([
-            fetch('/data/possible_answers.txt'),
-            fetch('/data/allowed_guesses.txt')
+            fetch('./data/possible_answers.txt'),
+            fetch('./data/allowed_guesses.txt')
         ]);
 
         if (!answersRes.ok || !guessesRes.ok) {
-            throw new Error('Word list files could not be found or loaded.');
+            // Throw a more descriptive error if the file fetch fails
+            throw new Error(`Failed to load word lists. Status: ${answersRes.status} / ${guessesRes.status}`);
         }
 
         const answersText = await answersRes.text();
@@ -128,7 +129,7 @@ async function loadWordLists() {
     } catch (error) {
         console.error('Error loading word lists:', error);
         document.getElementById('recommendationsList').innerHTML = 
-            '<div class="empty-state" style="color: red;">ERROR: Failed to load word lists. Please ensure files are in **`/data/`** and you are using a **local web server**.</div>';
+            '<div class="empty-state" style="color: red;">ERROR: Failed to load word lists. Check console (F12) for detailed network error.</div>';
     }
 }
 

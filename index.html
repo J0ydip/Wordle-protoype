@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle Solver - Information Theory Prototype</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Wordle Solver</h1>
+            <p>Information Theory Based Word Recommendations</p>
+        </div>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label>Enter Your Guess</label>
+                <input type="text" id="guessInput" class="guess-input" maxlength="5" placeholder="WORD">
+            </div>
+
+            <div class="input-group">
+                <label>Select Pattern (Click tiles: Gray → Yellow → Green)</label>
+                <div class="pattern-selector" id="patternSelector">
+                    <button class="pattern-btn gray" data-index="0">_</button>
+                    <button class="pattern-btn gray" data-index="1">_</button>
+                    <button class="pattern-btn gray" data-index="2">_</button>
+                    <button class="pattern-btn gray" data-index="3">_</button>
+                    <button class="pattern-btn gray" data-index="4">_</button>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-primary" id="submitBtn">Submit Guess</button>
+                <button class="btn btn-secondary" id="resetBtn">Reset</button>
+            </div>
+        </div>
+
+        <div class="recommendations">
+            <h2>📊 Recommended Next Guesses</h2>
+            <div id="recommendationsList" class="word-list">
+                <div class="empty-state">Loading recommendations...</div>
+            </div>
+        </div>
+
+        <div class="history">
+            <h2>📝 Guesses History</h2>
+            <div id="guessesHistory" class="guess-history">
+                <div class="empty-state">No guesses yet</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

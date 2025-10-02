@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Prototype Look: Plain white background, default font */
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0; /* Light gray background */
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* These styles are left unused since the stats card is removed from HTML */
+.stats, .stat-card {
+    display: none; 
+}
+/* End Unused Styles */
+
+
+/* Use block display for sections with minimal padding/borders */
+.input-section, .recommendations, .history {
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc; /* Simple border instead of shadows */
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+.guess-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #999;
+    border-radius: 0; /* Square edges */
+    letter-spacing: 5px; /* Tighter letter spacing */
+}
+
+.guess-input:focus {
+    outline: none;
+    border-color: black;
+}
+
+.pattern-selector {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.pattern-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #333;
+    border-radius: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    cursor: pointer;
+    transition: none; /* Remove transitions */
+    background: #eee;
+    color: #333;
+}
+
+/* Simple, distinct colors for feedback */
+.pattern-btn.gray {
+    background: #aaa;
+    color: black;
+}
+
+.pattern-btn.yellow {
+    background: #ffcc00;
+    color: black;
+}
+
+.pattern-btn.green {
+    background: #66cc66;
+    color: black;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    flex: 1;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: normal;
+    border: 1px solid black;
+    border-radius: 0;
+    cursor: pointer;
+    transition: none;
+}
+
+.btn-primary {
+    background: #333;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #555;
+}
+
+.btn-secondary {
+    background: white;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #eee;
+}
+
+.recommendations h2, .history h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+/* Word List: Simple columnar display */
+.word-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.word-item {
+    padding: 5px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    cursor: pointer;
+    transition: none;
+    text-align: center;
+    min-width: 100px;
+}
+
+/* Styling for the green-boxed possible answer (now with simple prototype colors) */
+.word-item[style*="border: 2px solid #6aaa64"] {
+    border: 2px solid #66cc66 !important; /* Simple green border */
+    background: #ddffdd !important; /* Simple light green background */
+}
+
+.word-item:hover {
+    background: #ddd;
+    color: #333;
+    border-color: #333;
+    transform: none;
+}
+
+.word-item .word {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.word-item .entropy {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+/* History Tiles: Simplified look */
+.guess-history {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.guess-item {
+    display: flex;
+    gap: 3px;
+}
+
+.tile {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    border: 1px solid #333;
+    border-radius: 0;
+    color: black;
+    background: white;
+    /* Centering logic remains */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Simple, block colors for history tiles */
+.tile.gray {
+    background: #aaa;
+    color: black;
+}
+
+.tile.yellow {
+    background: #ffcc00;
+    color: black;
+}
+
+.tile.green {
+    background: #66cc66;
+    color: black;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-style: italic;
+}

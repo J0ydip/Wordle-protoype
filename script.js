@@ -90,9 +90,10 @@ let currentPattern = ['b', 'b', 'b', 'b', 'b'];
 
 async function loadWordLists() {
     try {
+        // --- PATH FIX: Changed '/data/' to './data/' for relative loading on GitHub Pages ---
         const [answersRes, guessesRes] = await Promise.all([
-            fetch('/data/possible_answers.txt'),
-            fetch('/data/allowed_guesses.txt')
+            fetch('./data/possible_answers.txt'),
+            fetch('./data/allowed_guesses.txt')
         ]);
 
         if (!answersRes.ok || !guessesRes.ok) {
@@ -117,7 +118,6 @@ async function loadWordLists() {
 
         solver = new WordleSolver(possibleAnswers, allAllowedWords);
         
-        // updateStats() call removed
         calculateRecommendations(10);
         
         const listEl = document.getElementById('recommendationsList');
@@ -177,7 +177,6 @@ function submitGuess() {
     guesses.push({ word: guess, pattern });
     solver.filterWords(guess, pattern);
     
-    // updateStats() removed
     updateGuessesHistory();
     calculateRecommendations(20);
     
@@ -201,7 +200,7 @@ function calculateRecommendations(count = 20) {
     }
 
     listEl.innerHTML = recommendations.map(rec => {
-        // Highlighting possible answers (the "green box" logic, styled by CSS)
+        // Highlighting possible answers (the "green box" logic)
         const isAnswerClass = rec.isPossibleAnswer ? 'style="border: 2px solid #6aaa64; background: #e6ffed;"' : '';
         const answerLabel = rec.isPossibleAnswer ? ' (Ans)' : '';
         
@@ -218,8 +217,6 @@ function selectWord(word) {
     document.getElementById('guessInput').value = word.toUpperCase();
     updatePatternButtons();
 }
-
-// updateStats() function was here, but is now removed.
 
 function updateGuessesHistory() {
     const historyEl = document.getElementById('guessesHistory');
@@ -243,7 +240,6 @@ function resetSolver() {
     guesses = [];
     currentPattern = ['b', 'b', 'b', 'b', 'b'];
     solver.reset();
-    // updateStats() removed
     updateGuessesHistory();
     calculateRecommendations(10);
     updatePatternButtons();
